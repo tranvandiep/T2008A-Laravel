@@ -1,0 +1,10 @@
+body {
+	background-color: orange;
+	background-image: url('../photos/library/1.jpeg');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+h1 {
+	color: red;
+}
