@@ -5,20 +5,18 @@ namespace Database\Seeders;
 use DB;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder {
+class CategorySeeder extends Seeder {
 	/**
-	 * Seed the application's database.
+	 * Run the database seeds.
 	 *
 	 * @return void
 	 */
 	public function run() {
-		// \App\Models\User::factory(10)->create();
-		//insert data category: Bep Tu & Bep Dien Tu
 		DB::table('category')->insert([
-				'name' => 'Bep Tu'
+				'name' => 'Bep Tu 1'
 			]);
 		DB::table('category')->insert([
-				'name' => 'Bep Dien Tu'
+				'name' => 'Bep Dien Tu 1'
 			]);
 	}
 }
