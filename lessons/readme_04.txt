@@ -1,7 +1,7 @@
 Nội dung kiến thức:
 - migration
 - DB: căn bản
-- Model căn bản.
+- Model căn bản: ORM (Table (db) - Class Object (Ngon ngu lap trinh)) -] insert/update/delete -] tu dong cap nhat du lieu vao table tuong ung khi goi ham.
 ====================================================
 Mini Project:
 - Xây dựng 1 hệ thống web bán
@@ -13,7 +13,8 @@ Mini Project:
 
 	create table category (
 		id int primary key auto_increment,
-		name varchar(100)
+		name varchar(100),
+		parent_id int references category (id)
 	);
 
 	create table product (
@@ -22,6 +23,7 @@ Mini Project:
 		thumbnail varchar(500),
 		price float,
 		content longtext,
+		category_id int references category (id),
 		created_at datetime,
 		updated_at datetime
 	);
