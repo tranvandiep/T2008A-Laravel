@@ -8,6 +8,11 @@ use DB;
 use Illuminate\Http\Request;
 
 class PosController extends Controller {
+	public function __construct() {
+		$this->middleware('auth');
+		$this->middleware('permission');
+	}
+
 	public function index(Request $request) {
 		$dataList = DB::table('product')
 			->leftJoin('category', 'category.id', '=', 'product.category_id')

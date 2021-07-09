@@ -7,6 +7,11 @@ use DB;
 use Illuminate\Http\Request;
 
 class ScheduleController extends Controller {
+	public function __construct() {
+		$this->middleware('auth');
+		$this->middleware('permission');
+	}
+
 	public function index(Request $request) {
 		$today = date('Y-m-d');
 

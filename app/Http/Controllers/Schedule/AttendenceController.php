@@ -7,6 +7,11 @@ use DB;
 use Illuminate\Http\Request;
 
 class AttendenceController extends Controller {
+	public function __construct() {
+		$this->middleware('auth');
+		$this->middleware('permission');
+	}
+
 	public function index(Request $request) {
 		$schedule_id = $request->schedule_id;
 
