@@ -40,3 +40,4 @@ B2. Triển khai dự án.
 - Test Phan Quyen: -> TEST
 - Kich hoat chuc nang phan quyen
 	- Yêu cầu auth -> login
+	- Phan quyen theo bảng permission

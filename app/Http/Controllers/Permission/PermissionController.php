@@ -7,6 +7,11 @@ use DB;
 use Illuminate\Http\Request;
 
 class PermissionController extends Controller {
+	// public function __construct() {
+	// 	$this->middleware('auth');
+	// 	$this->middleware('permission');
+	// }
+
 	public function viewRoles(Request $request) {
 		$roleList = DB::table('roles')->get();
 
