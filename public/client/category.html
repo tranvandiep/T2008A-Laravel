@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Category Page</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src = "js/config.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="form-group" style="display: flex;">
+			<input type="text" name="category_name" value="" placeholder="Enter category name" class="form-control" style="width: 300px;">
+			<button class="btn btn-success" style="float:left; margin-left: 10px;" onclick="saveCategory()">Save</button>
+		</div>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>No</th>
+					<th>Name</th>
+					<th style="width: 50px;"></th>
+					<th style="width: 50px;"></th>
+				</tr>
+			</thead>
+			<tbody id="result"></tbody>
+		</table>
+	</div>
+
+	<script type="text/javascript">
+		$(function() {
+			$.get(BASE_URL + API_CATEGORY_LIST, function(data) {
+				// console.log(data)
+				result = JSON.parse(data)
+				for(i=0;i<result.length;i++) {
+					$('#result').append(`<tr>
+							<td>${i+1}</td>
+							<td>${result[i].name}</td>
+							<td><button class="btn btn-warning">Edit</button></td>
+							<td><button class="btn btn-danger" onclick="removeItem(${result[i].id})">Remove</button></td>
+						</tr>`)
+				}
+			})
+		})
+
+		function removeItem(id) {
+			var option = confirm('Ban co chac chan muon xoa danh muc nay khong?')
+			if(!option) return
+
+			$.post(BASE_URL + API_CATEGORY_REMOVE + id, null, function(data) {
+				// console.log(data)
+				location.reload()
+			})
+		}
+
+		function saveCategory() {
+			$.post(BASE_URL + API_CATEGORY_STORE, {
+				'category_name': $('[name=category_name]').val()
+			}, function(data) {
+				// console.log(data)
+				location.reload()
+			})
+		}
+	</script>
+</body>
+</html>
